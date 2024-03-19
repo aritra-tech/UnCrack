@@ -22,7 +22,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.geekymusketeers.uncrack.adapter.AccountAdapter
-import com.geekymusketeers.uncrack.data.model.Account
+import com.geekymusketeers.uncrack.domain.model.Account
 import com.geekymusketeers.uncrack.databinding.FragmentHomeBinding
 import com.geekymusketeers.uncrack.databinding.ParagraphModalBinding
 import com.geekymusketeers.uncrack.databinding.SharepasswordModalBinding
@@ -267,21 +267,21 @@ class HomeFragment : Fragment() {
 
 
 
-        viewModel = ViewModelProvider(this)[AccountViewModel::class.java]
-        viewModel.readAllData.observe(viewLifecycleOwner) { account ->
-
-
-            accountList.clear()
-            accountList.addAll(account)
-
-            accountAdapter.setData(account)
-            if (account.isEmpty()) {
-                binding.emptyList.visibility = View.VISIBLE
-            } else {
-                binding.emptyList.visibility = View.GONE
-            }
-
-        }
+//        viewModel = ViewModelProvider(this)[AccountViewModel::class.java]
+//        viewModel.getAccounts().observe(viewLifecycleOwner) { account ->
+//
+//
+//            accountList.clear()
+//            accountList.addAll(account)
+//
+//            accountAdapter.setData(account)
+//            if (account.isEmpty()) {
+//                binding.emptyList.visibility = View.VISIBLE
+//            } else {
+//                binding.emptyList.visibility = View.GONE
+//            }
+//
+//        }
 
         // Moving to AddFragment
         binding.fab.setOnClickListener {
@@ -387,16 +387,16 @@ class HomeFragment : Fragment() {
     }
 
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.readAllData.observe(viewLifecycleOwner) { account ->
-            accountAdapter.setData(account)
-            if (account.isEmpty()) {
-                binding.emptyList.visibility = View.VISIBLE
-            } else {
-                binding.emptyList.visibility = View.GONE
-            }
-
-        }
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        viewModel.readAllData.observe(viewLifecycleOwner) { account ->
+//            accountAdapter.setData(account)
+//            if (account.isEmpty()) {
+//                binding.emptyList.visibility = View.VISIBLE
+//            } else {
+//                binding.emptyList.visibility = View.GONE
+//            }
+//
+//        }
+//    }
 }
